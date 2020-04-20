@@ -7,9 +7,9 @@ const PORT = process.env.PORT || 8080
 
 const db = knex({
   client : 'pg',
-  connection : {
-    connectionString: 'postgres://fbqmbonkuyufry:8f457286764d6728658320d49fc40c0435e949098521b8a775c5a632b35d7e37@ec2-18-206-84-251.compute-1.amazonaws.com:5432/d9qrfnmsh134r2',
-    ssl: true,
+  connectionString : {
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
   }
 });
 
@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('its fuckong working');
+  res.send('BUSY ...');
 });
 
 app.post('/signin', (req, res) => {
